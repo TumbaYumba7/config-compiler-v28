@@ -1,0 +1,28 @@
+- Конфигурация базы данных
+database_name is [[production_db]]
+
+connection is struct {
+    host = [[localhost]],
+    port = @[oo]5432,
+    username = [[admin]],
+    password = [[secret123]]
+}
+
+%{
+Параметры пула соединений
+%}
+pool is struct {
+    min_size = @[oo]5,
+    max_size = @[oo]20,
+    timeout = @[oo]30
+}
+
+backup is struct {
+    enabled = true,
+    interval = @[oo]3600,
+    retention_days = @[oo]30
+}
+
+- Использование вычисления констант
+default_port is @[oo]5432
+current_port is !(default_port)
